@@ -7,7 +7,7 @@ if (isset($_POST['get_distance'])) {
     $destination = $_POST['destination'];
 
     // secret key for google distance matrix api
-    $apiKey = 'AIzaSyCiNbEvScJ98juCvC1Lwcjlm1uhrVFuoVw';
+    $apiKey = 'YOUR_API_KEY'; // replace with your own api key
     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destination&origins=$origin&key=$apiKey";
 
     $postData = array(
