@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Distance API</title>
-    <link rel="stylesheet" href="../tailwind/tailwind-all.css">
-    <link rel="stylesheet" href="../tailwind/tailwind-all.min.css">
-    <link rel="stylesheet" href="../tailwind/tailwind-base.css">
-    <link rel="stylesheet" href="../tailwind/tailwind-base.min.css">
-    <link rel="stylesheet" href="../tailwind/tailwind-components.css">
-    <link rel="stylesheet" href="../tailwind/tailwind-components.min.css">
-    <link rel="stylesheet" href="../tailwind/tailwind-utilities.css">
-    <link rel="stylesheet" href="../tailwind/tailwind-utilities.min.css">
+    <link rel="stylesheet" href="tailwind/tailwind-all.css">
+    <link rel="stylesheet" href="tailwind/tailwind-all.min.css">
+    <link rel="stylesheet" href="tailwind/tailwind-base.css">
+    <link rel="stylesheet" href="tailwind/tailwind-base.min.css">
+    <link rel="stylesheet" href="tailwind/tailwind-components.css">
+    <link rel="stylesheet" href="tailwind/tailwind-components.min.css">
+    <link rel="stylesheet" href="tailwind/tailwind-utilities.css">
+    <link rel="stylesheet" href="tailwind/tailwind-utilities.min.css">
 </head>
 
 <body>
