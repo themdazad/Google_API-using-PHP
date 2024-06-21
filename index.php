@@ -33,14 +33,22 @@
                 </div>
             </input_fields>
             <!-- Getting Data from API using distance_api.php  -->
-         
+                <?php  
+                //  header("location:index.php?origin=$origin&destination=$destination&distance=$distance&");
+                    
+                        $origin_ = $_GET['origin'];
+                        $destination_ = $_GET['destination'];
+                        $distance_ = $_GET['distance'];
+                
+                ?>
+              
             <!-- output field  for distance -->
             <div class="flex items-center justify-between mt-4 space-x-2">
-              <label for="remember" class="text-sm font-semibold text-gray-500"> From : </label>
-              <label for="remember" class="text-sm font-semibold text-gray-500"> To : </label>
+              <p class="text-sm font-semibold text-gray-500"> From : <?php echo $origin_ ?> </p>
+              <p class="text-sm font-semibold text-gray-500"> To :  <?php echo $destination_ ?> </p>
             </div>
             <div class="flex items-center mb-4 space-x-2">
-              <label for="remember" class="text-sm font-semibold text-gray-500 " name="distance"> Distance : </label>
+              <label for="remember" class="text-sm font-semibold text-gray-500 " name="distance"> Distance : <?php echo $distance_ ?> </label>
             </div>
 
             <div>

@@ -1,57 +1,48 @@
 <?php
-
-echo "hello";
 // Handling form data in PHP
 if (isset($_POST['get_distance'])) {
 
+    // data commnig from index.php form
     $origin = $_POST['origin'];
     $destination = $_POST['destination'];
-    echo "Origin: " . $origin . "<br>";
 
+    // secret key for google distance matrix api
+    $apiKey = 'AIzaSyCiNbEvScJ98juCvC1Lwcjlm1uhrVFuoVw';
+    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destination&origins=$origin&key=$apiKey";
 
-    
-// $apiKey = 'AIzaSyCiNbEvScJ98juCvC1Lwcjlm1uhrVFuoVw';
+    $postData = array(
+        'param1' => 'value1',
+        'param2' => 'value2'
+    );
 
-// $url = "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destination&origins=$origin&key=$apiKey";
+    $ch = curl_init();
 
-// $postData = array(
-//     'param1' => 'value1',
-//     'param2' => 'value2'
-// );
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Authorization: Bearer ' . $apiKey,
+        'Content-Type: application/x-www-form-urlencoded'
+    ));
 
-// $ch = curl_init();
+    $response = curl_exec($ch);
 
-// curl_setopt($ch, CURLOPT_URL, $url);
-// curl_setopt($ch, CURLOPT_POST, true);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-//     'Authorization: Bearer ' . $apiKey,
-//     'Content-Type: application/x-www-form-urlencoded'
-// ));
+    // error handling 
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
 
-// $response = curl_exec($ch);
+    curl_close($ch);
+    $data = json_decode($response, true);
 
-// if (curl_errno($ch)) {
-//     echo 'Error:' . curl_error($ch);
-// }
+    // storing data in variables as per google api response
+    $origin =  $data['destination_addresses'][0];
+    $destination =  $data['origin_addresses'][0];
+    $distance =  $data['rows'][0]['elements'][0]['distance']['text'];
+   
 
-// curl_close($ch);
+    // passing data to index.php by url  query string 
+    header("location:index.php?origin=$origin&destination=$destination&distance=$distance");
 
-// echo "<pre>";
-// $data = json_decode($response, true);
-
-
-// destination address
-// print_r("From: " . $data['destination_addresses'][0]);
-// echo "<br>";
-// print_r("To: " . $data['origin_addresses'][0]);
-// echo "<br>";
-// print_r("Distance: " . $data['rows'][0]['elements'][0]['distance']['text']);
-    
 }
-
-
-
-
-?>
